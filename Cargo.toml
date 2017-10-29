@@ -1,0 +1,11 @@
+[package]
+authors = ["Doug Goldstein <cardoe@cardoe.com>"]
+name = "xen-rust"
+version = "0.0.0-pre"
+
+[lib]
+crate-type = ["staticlib"]
+
+[dependencies]
+rlibc = "1"
+xen-sys = { path = "xen-sys" }
