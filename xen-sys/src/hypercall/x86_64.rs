@@ -43,10 +43,11 @@ unsafe fn hypercall_2(op: Hypercall,
     let ret: c_long;
     let _ign1: c_ulong;
     let _ign2: c_ulong;
+    let addr = HYPERCALL_PAGE.as_ptr().offset(op as isize);
 
-    asm!("call HYPERCALL_PAGE + $0"
+    asm!("callq *$0"
          : "={rax}" (ret), "={rdi}" (_ign1), "={rsi}" (_ign2)
-         : "r" (op),
+         : "r" (addr),
            "{rdi}" (a1), "{rsi}" (a2)
          : "memory"
          : "volatile");
@@ -62,10 +63,11 @@ pub unsafe fn hypercall_3(op: Hypercall,
     let _ign1: c_ulong;
     let _ign2: c_ulong;
     let _ign3: c_ulong;
+    let addr = HYPERCALL_PAGE.as_ptr().offset(op as isize);
 
-    asm!("call HYPERCALL_PAGE + $0"
+    asm!("callq *$0"
          : "={rax}" (ret), "={rdi}" (_ign1), "={rsi}" (_ign2), "={rdx}" (_ign3)
-         : "i" (op),
+         : "r" (addr),
            "{rdi}" (a1), "{rsi}" (a2), "{rdx}" (a3)
          : "memory"
          : "volatile");
