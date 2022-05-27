@@ -7,9 +7,9 @@ repository = "https://github.com/rust-vmm/xen-sys.git"
 license = "MIT/Apache-2.0"
 name = "xen"
 readme = "README.md"
-version = "0.0.0-pre1"
+version = "0.0.0-pre2"
 edition = "2018"
 
 [dependencies.xen-sys]
 path = "../xen-sys"
-version = "=0.0.0-pre1"
+version = "=0.0.0-pre2"
